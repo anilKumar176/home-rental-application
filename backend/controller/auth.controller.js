@@ -58,9 +58,9 @@ export const login = async (req, res,next) => {
       { expiresIn: '1h' } // Optional: add expiry
     );
 
-    const { password: pass, ...user } = validUser._doc;
+    const { password: pass, ...rest } = validUser._doc;
 
-    res.status(200).json({ token, user });
+    res.status(200).json({ token, rest });
   } catch (error) {
    next(error)
   }
