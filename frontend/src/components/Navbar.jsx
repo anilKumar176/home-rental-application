@@ -32,7 +32,8 @@ const Navbar = () => {
         <button onClick={()=> setDropDownMenu(!dropdownMenu)}
         className="h-[50px] flex items-center px-[10px] border border-gray-500 rounded-[30px] gap-2.5 bg-white cursor-pointer hover:shadow-lg"
         > <IoMenu className='text-slate-600 ' />
-        {!user ? <FaUser className='text-slate-500'   />:
+
+        {!user.user? <FaUser className='text-slate-600'   />:
         (
             <img
              src={`http://localhost:3000/${user?.user?.profileImagePath.replace("public","")}`}
@@ -48,10 +49,10 @@ const Navbar = () => {
        )}
         {dropdownMenu && user && (
         <div className='absolute bg-white right-15 sm:right-5 top-20 flex flex-col w-48 p-2.5 border border-gray-300 rounded-2xl shadow-lg z-[999]'>
-            <Link to={`/${user.user._id}/trips`}>Trip List</Link>
-            <Link to={`/${user.user._id}/wishList`}>Wish List</Link>
-            <Link to={`/${user.user._id}/properties`}>Property List</Link>
-            <Link to={`/${user.user._id}/reservation`}>Reservation List</Link>
+            <Link to={`/${user?.user?._id}/trips`}>Trip List</Link>
+            <Link to={`/${user?.user?._id}/wishList`}>Wish List</Link>
+            <Link to={`/${user?.user?._id}/properties`}>Property List</Link>
+            <Link to={`/${user?.user?._id}/reservation`}>Reservation List</Link>
             <Link to={"/create-listing"}>Become A Host</Link>
           
         </div>
