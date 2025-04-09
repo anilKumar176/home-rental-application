@@ -1,14 +1,16 @@
 import React, { useState } from 'react'
-import { Navigate, useNavigate, useSearchParams } from 'react-router-dom'
-import { Link } from 'react-router-dom'
+import { Link,useNavigate } from 'react-router-dom'
 import { setLogin } from '../redux/slice/userSlice'
 import { useDispatch } from 'react-redux'//there using chatgpt
 
 const LoginPage = () => {
 const [email,setEmail]=useState("")
 const [password,setPassword]=useState("")
+
 const dispatch =useDispatch();
-const navigate=useNavigate()
+
+const navigate=useNavigate();
+
 const handleSubmit=async (e)=>{
   e.preventDefault()
   try{
@@ -25,7 +27,7 @@ const handleSubmit=async (e)=>{
    const data=await response.json();
    if(data){
    dispatch(setLogin({
-      user:data.user,//there referes to chatgpt
+      user:data.rest,//there referes to chatgpt
       token:data.token,
    })
   )
